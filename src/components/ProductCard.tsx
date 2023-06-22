@@ -14,7 +14,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
 
   return (
     <Col className={"mt-3"}>
-      <Card onClick={() => onClick(givenItem.id)}>
+      <Card onClick={() => (onClick ? onClick(givenItem.id) : "")}>
         <Card.Img variant={"top"} src={givenItem.images[0]} />
         <Card.Body>
           <Card.Title>{givenItem.name}</Card.Title>

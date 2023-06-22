@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { productSlice } from "@/redux/productSlice";
 
 const Header = () => {
-  const links = ["view", "search", "create", "update"];
+  const links = ["view", "search", "create", "update", "delete"];
 
   const dispatch = useAppDispatch();
   const { setProduct } = productSlice.actions;

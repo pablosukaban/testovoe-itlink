@@ -30,5 +30,10 @@ export const productSlice = createSlice({
         state.products[index] = updateItem;
       }
     },
+    deleteProduct: (state, action: PayloadAction<number>) => {
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload
+      );
+    },
   },
 });
