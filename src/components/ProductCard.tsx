@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+
 import { Card, Col } from "@/components/bootstrap";
 import { ItemType } from "../data";
+import Image from "next/image";
 
 interface ProductProps {
   givenItem: ItemType;
@@ -12,7 +14,7 @@ const ProductCard = ({ givenItem }: ProductProps) => {
   return (
     <Col className={"mt-3"}>
       <Card>
-        <Card.Img variant="top" src={givenItem.images[0]} />
+        <Card.Img variant={"top"} src={givenItem.images[0]} />
         <Card.Body>
           <Card.Title>{givenItem.name}</Card.Title>
           <Card.Text>
