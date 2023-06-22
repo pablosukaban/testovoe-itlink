@@ -24,7 +24,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
           <Card.Text>{givenItem.description}</Card.Text>
           {!!tech_chars && (
             <>
-              <Card.Text>Характеристики</Card.Text>
+              <Card.Text>Характеристики: </Card.Text>
               <ul>
                 {Object.keys(tech_chars).map((key) => (
                   <li key={key}>
@@ -39,7 +39,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
               <Card.Text>Дополнительные опции:</Card.Text>
               <Card.Text>
                 {givenItem.options.map((option) => (
-                  <span key={option.option_name}>{option.option_name} </span>
+                  <span key={option.option_name}>{option.option_name}. </span>
                 ))}
               </Card.Text>
             </>

@@ -49,34 +49,34 @@ const FormComp = ({
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group className="mb-3" controlId="name">
-        <Form.Label>Name</Form.Label>
+        <Form.Label>Имя</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Name"
+          placeholder="Имя"
           {...register("name", { required: true })}
         />
       </Form.Group>
       <Form.Group className={"mb-3"} controlId={"description"}>
-        <Form.Label>Description</Form.Label>
+        <Form.Label>Описание</Form.Label>
         <Form.Control
           type={"text"}
-          placeholder={"Description"}
+          placeholder={"Описание"}
           {...register("description", { required: true })}
         />
       </Form.Group>
       <Form.Group className={"mb-3"} controlId={"price"}>
-        <Form.Label>Price</Form.Label>
+        <Form.Label>Цена</Form.Label>
         <Form.Control
           type={"number"}
-          placeholder={"Price"}
+          placeholder={"Цена"}
           {...register("price", { required: true })}
         />
       </Form.Group>
       <Form.Group className={"mb-3"} controlId={"contacts"}>
-        <Form.Label>Contacts</Form.Label>
+        <Form.Label>Контакты</Form.Label>
         <Form.Control
           type={"text"}
-          placeholder={"Contacts"}
+          placeholder={"Контакты"}
           {...register("contacts", { required: true })}
         />
       </Form.Group>
@@ -85,26 +85,26 @@ const FormComp = ({
         type={"button"}
         onClick={() => setIsTechChars((prev) => !prev)}
       >
-        {isTechChars ? "Удалить" : "Добавить"} tech chars
+        {isTechChars ? "Удалить" : "Добавить"} тех. характеристики
       </Button>
       {isTechChars && (
         <>
           <Row className={"mt-3"}>
             <Form.Group as={Col} className={"mb-3"} controlId={"brand"}>
-              <Form.Label>Brand</Form.Label>
+              <Form.Label>Бренд</Form.Label>
               <Form.Control
                 type={"text"}
-                placeholder={"Brand"}
+                placeholder={"Бренд"}
                 {...register("technical_characteristics.brand", {
                   required: isTechChars,
                 })}
               />
             </Form.Group>
             <Form.Group as={Col} className={"mb-3"} controlId={"model"}>
-              <Form.Label>Model</Form.Label>
+              <Form.Label>Модель</Form.Label>
               <Form.Control
                 type={"text"}
-                placeholder={"Model"}
+                placeholder={"Модель"}
                 {...register("technical_characteristics.model", {
                   required: isTechChars,
                 })}
@@ -113,20 +113,20 @@ const FormComp = ({
           </Row>
           <Row>
             <Form.Group as={Col} className={"mb-3"} controlId={"year"}>
-              <Form.Label>Year</Form.Label>
+              <Form.Label>Год</Form.Label>
               <Form.Control
                 type={"number"}
-                placeholder={"Year"}
+                placeholder={"Год"}
                 {...register("technical_characteristics.productionYear", {
                   required: isTechChars,
                 })}
               />
             </Form.Group>
             <Form.Group as={Col} className={"mb-3"} controlId={"body"}>
-              <Form.Label>Body</Form.Label>
+              <Form.Label>Кузов</Form.Label>
               <Form.Control
                 type={"text"}
-                placeholder={"Body"}
+                placeholder={"Кузов"}
                 {...register("technical_characteristics.body", {
                   required: isTechChars,
                 })}
@@ -135,10 +135,10 @@ const FormComp = ({
           </Row>
           <Row>
             <Form.Group as={Col} className={"mb-3"} controlId={"mileage"}>
-              <Form.Label>Mileage</Form.Label>
+              <Form.Label>Пробег</Form.Label>
               <Form.Control
                 type={"number"}
-                placeholder={"Mileage"}
+                placeholder={"Пробег"}
                 {...register("technical_characteristics.mileage", {
                   required: isTechChars,
                 })}
@@ -149,7 +149,7 @@ const FormComp = ({
       )}
       <Form.Group className={"my-4"}>
         <Button type={"button"} onClick={addInfo} className={"block"}>
-          Add info
+          Добавить опцию
         </Button>
       </Form.Group>
       {additionalInfoList &&
@@ -157,16 +157,16 @@ const FormComp = ({
           <Form.Group className={"mb-3 mt-4 d-flex"} key={item.id}>
             <Form.Control
               type={"text"}
-              placeholder={"Additional info"}
+              placeholder={"Доп. опция"}
               value={item.option_name}
               onChange={(e) => changeInfo(item.id, e.target.value)}
             />
             <Button variant={"danger"} onClick={() => deleteInfo(item.id)}>
-              Delete
+              Удалить
             </Button>
           </Form.Group>
         ))}
-      <Button type={"submit"}>Submit</Button>
+      <Button type={"submit"}>Подтвердить</Button>
     </Form>
   );
 };

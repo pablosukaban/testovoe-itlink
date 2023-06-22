@@ -43,71 +43,67 @@ const Page = () => {
       <h1>Страница search</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="brand">
-          <Form.Label>Brand</Form.Label>
+          <Form.Label>Бренд</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Brand"
+            placeholder="Бренд"
             {...register("brand")}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="model">
-          <Form.Label>Model</Form.Label>
+          <Form.Label>Модель</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Model"
+            placeholder="Модель"
             {...register("model")}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="year">
-          <Form.Label>Year</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Year"
-            {...register("year")}
-          />
+          <Form.Label>Год</Form.Label>
+          <Form.Control type="number" placeholder="Год" {...register("year")} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="body">
-          <Form.Label>Body</Form.Label>
-          <Form.Control type="text" placeholder="Body" {...register("body")} />
+          <Form.Label>Кузов</Form.Label>
+          <Form.Control type="text" placeholder="Кузов" {...register("body")} />
         </Form.Group>
         <Row>
           <Form.Group as={Col}>
             <Form.Label>Цена от</Form.Label>
             <Form.Control
               type="number"
-              placeholder="PriceFrom"
+              placeholder="Цена, до"
               {...register("priceFrom")}
             />
           </Form.Group>
           <Form.Group as={Col}>
-            <Form.Label>Цена до</Form.Label>
+            <Form.Label>Цена, до</Form.Label>
             <Form.Control
               type="number"
-              placeholder="PriceTo"
+              placeholder="Цена, до"
               {...register("priceTo")}
             />
           </Form.Group>
         </Row>
         <Row className={"mt-3"}>
           <Form.Group as={Col}>
-            <Form.Label>Пробег от</Form.Label>
+            <Form.Label>Пробег, от</Form.Label>
             <Form.Control
               type="number"
-              placeholder="MileageFrom"
+              placeholder="Пробег, от"
               {...register("mileageFrom")}
             />
           </Form.Group>
           <Form.Group as={Col}>
-            <Form.Label>Пробег до</Form.Label>
+            <Form.Label>Пробег, до</Form.Label>
             <Form.Control
               type="number"
-              placeholder="MileageTo"
+              placeholder="Пробег, до"
               {...register("mileageTo")}
             />
           </Form.Group>
         </Row>
         <Button variant="primary" type="submit" className={"mt-4"}>
-          Search
+          Поиск
         </Button>
       </Form>
 
