@@ -5,6 +5,7 @@ import { Button, Col, Container, Form, Row } from "@/components/bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ProductCard from "@/components/ProductCard";
 import { ItemType } from "@/types";
+import ProductList from "@/components/ProductList";
 
 type Inputs = {
   model: string;
@@ -36,6 +37,8 @@ const Page = () => {
 
     setFoundData(result);
   };
+
+  if (!foundData) return <h1>No data</h1>;
 
   return (
     <Container>
@@ -109,13 +112,7 @@ const Page = () => {
         </Button>
       </Form>
 
-      <Row xs={1} md={2}>
-        {foundData?.data.length === 0 && <h1>No data</h1>}
-        {foundData &&
-          foundData.data.map((item) => (
-            <ProductCard givenItem={item} key={item.id} />
-          ))}
-      </Row>
+      <ProductList products={foundData.data} />
     </Container>
   );
 };

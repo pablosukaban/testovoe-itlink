@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import { Container, Row } from "@/components/bootstrap";
 import { ItemType } from "@/types";
+import ProductList from "@/components/ProductList";
 
 type ResponseType = {
   data: ItemType[];
@@ -15,15 +16,7 @@ const ViewPage = async () => {
 
   return (
     <Container>
-      <Row xs={1} md={2}>
-        {data ? (
-          data.data.map((item) => (
-            <ProductCard givenItem={item} key={item.id} />
-          ))
-        ) : (
-          <h1>No data</h1>
-        )}
-      </Row>
+      <ProductList products={data.data} />
     </Container>
   );
 };

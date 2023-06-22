@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "@/components/bootstrap";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { productSlice } from "@/redux/productSlice";
-import ProductCard from "@/components/ProductCard";
+import ProductList from "@/components/ProductList";
 
 type Inputs = {
   name: string;
@@ -30,7 +30,7 @@ type Additional = {
 const CreatePage = () => {
   const { products } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
-  const { setProduct, addProduct } = productSlice.actions;
+  const { addProduct } = productSlice.actions;
 
   const [isTechChars, setIsTechChars] = useState(false);
 
@@ -51,7 +51,7 @@ const CreatePage = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const newBody = {...data, options: additionalInfoList}
+    const newBody = { ...data, options: additionalInfoList };
 
     const response = await fetch("http://localhost:3000/api/product", {
       method: "POST",
@@ -63,14 +63,14 @@ const CreatePage = () => {
 
     const result = await response.json();
 
-
     dispatch(addProduct(result.data));
   };
 
-  console.log('yo')
-
   const addInfo = () => {
-    setAdditionalInfoList((prev) => [...prev, { id: Date.now(), option_name: "" }]);
+    setAdditionalInfoList((prev) => [
+      ...prev,
+      { id: Date.now(), option_name: "" },
+    ]);
   };
 
   const deleteInfo = (id: number) => {
@@ -208,13 +208,7 @@ const CreatePage = () => {
           ))}
         <Button type={"submit"}>Submit</Button>
       </Form>
-      <Row xs={1} md={2}>
-        {products ? (
-          products.map((item) => <ProductCard givenItem={item} key={item.id} />)
-        ) : (
-          <h1>No data</h1>
-        )}
-      </Row>
+      <ProductList products={products} />
     </Container>
   );
 };
