@@ -15,7 +15,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
   return (
     <Col className={"mt-3 d-flex align-items-stretch"}>
       <Card onClick={() => (onClick ? onClick(givenItem.id) : "")}>
-        <Card.Img variant={"top"} src={givenItem.images[0]} />
+        <Card.Img variant={"top"} src={givenItem.images[0] as string} />
         <Card.Body>
           <Card.Title>{givenItem.name}</Card.Title>
           <Card.Text>
@@ -34,7 +34,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
               </ul>
             </>
           )}
-          {givenItem.options && (
+          {givenItem.options && givenItem.options.length > 0 && (
             <>
               <Card.Text>Дополнительные опции:</Card.Text>
               <Card.Text>

@@ -1,6 +1,6 @@
 export interface ItemType {
   id: number;
-  images: string[];
+  images: string | Blob[] | MediaSource[];
   name: string;
   description: string;
   price: number;
@@ -26,7 +26,7 @@ export type Inputs = {
   name: string;
   description: string;
   price: number;
-  images: string[];
+  images: Blob[] | MediaSource[];
   contacts: string;
   technical_characteristics?: {
     model: string;

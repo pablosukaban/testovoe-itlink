@@ -2,6 +2,7 @@ import { Button, Col, Form, Row } from "@/components/bootstrap";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Additional, Inputs } from "@/types";
+import { FormGroup } from "react-bootstrap";
 
 type FormCompProps = {
   onSubmit: (data: any) => void;
@@ -80,6 +81,13 @@ const FormComp = ({
           {...register("contacts", { required: true })}
         />
       </Form.Group>
+      <FormGroup as={Col} className={"mb-3"}>
+        <Form.Label>Изображение</Form.Label>
+        <Form.Control
+          type={"file"}
+          {...register("images", { required: true })}
+        />
+      </FormGroup>
       <Button
         variant={isTechChars ? "outline-danger" : "outline-success"}
         type={"button"}

@@ -22,6 +22,11 @@ const CreatePage = () => {
     const newBody = {
       ...data,
       options: additionalInfoList,
+      technical_characteristics: {
+        ...data.technical_characteristics,
+        car_id: Date.now(),
+      },
+      images: [URL.createObjectURL(data.images[0])],
     };
 
     const response = await fetch("http://localhost:3000/api/product", {
@@ -43,16 +48,7 @@ const CreatePage = () => {
     contacts: "",
     description: "",
     price: 0,
-    images: [
-      "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960",
-    ],
-    technical_characteristics: {
-      model: "",
-      brand: "",
-      productionYear: 0,
-      body: "",
-      mileage: 0,
-    },
+    images: [],
   };
 
   return (

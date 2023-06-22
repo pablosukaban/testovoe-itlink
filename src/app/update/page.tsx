@@ -23,9 +23,11 @@ const UpdatePage = () => {
 
   const handleProductClick = (id: number) => {
     const foundCar = products.find((item) => item.id === id);
+
     if (!foundCar) {
       return;
     }
+
     setChosenCar(foundCar);
 
     if (foundCar.options) {
@@ -39,7 +41,11 @@ const UpdatePage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...data, id: chosenCar?.id }),
+      body: JSON.stringify({
+        ...data,
+        id: chosenCar?.id,
+        images: [URL.createObjectURL(data.images[0])],
+      }),
     });
 
     const result = await response.json();
