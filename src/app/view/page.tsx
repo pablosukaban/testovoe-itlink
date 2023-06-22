@@ -1,7 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import { Container, Row } from "@/components/bootstrap";
-import { useGetProductsQuery } from "@/redux/productAPI";
-import { ItemType } from "@/data";
+import { ItemType } from "@/types";
 
 type ResponseType = {
   data: ItemType[];

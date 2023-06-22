@@ -1,25 +1,5 @@
 import exp from "constants";
-
-export interface ItemType {
-  id: number;
-  images: string[];
-  name: string;
-  description: string;
-  price: number;
-  contacts: string;
-  technical_characteristics: {
-    car_id: number;
-    brand: string;
-    model: string;
-    productionYear: number;
-    body: string;
-    mileage: number;
-    [key: string]: string | number;
-  };
-  options: {
-    option_name: string;
-  }[];
-}
+import { ItemType } from "@/types";
 
 export const data: ItemType[] = [
   {
@@ -40,18 +20,19 @@ export const data: ItemType[] = [
       body: "body",
       mileage: 200000,
     },
-    options: [
-      {
-        option_name: "Климат-контроль",
-      },
-      {
-        option_name: "Кожаный руль",
-      },
-      {
-        option_name: "Центральный замок",
-      },
-    ],
+    // options: [
+    //   {
+    //     option_name: "Климат-контроль",
+    //   },
+    //   {
+    //     option_name: "Кожаный руль",
+    //   },
+    //   {
+    //     option_name: "Центральный замок",
+    //   },
+    // ],
   },
+
   {
     id: 6,
     images: [

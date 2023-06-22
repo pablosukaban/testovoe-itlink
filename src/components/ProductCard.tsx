@@ -1,8 +1,8 @@
 "use client";
 
 import { Card, Col } from "@/components/bootstrap";
-import { ItemType } from "../data";
 import Image from "next/image";
+import { ItemType } from "@/types";
 
 interface ProductProps {
   givenItem: ItemType;
@@ -21,20 +21,28 @@ const ProductCard = ({ givenItem }: ProductProps) => {
             Цена: <strong>{givenItem.price} ₽ </strong>
           </Card.Text>
           <Card.Text>{givenItem.description}</Card.Text>
-          <Card.Text>Характеристики</Card.Text>
-          <ul>
-            {Object.keys(tech_chars).map((key) => (
-              <li key={key}>
-                {key}: {tech_chars[key]}
-              </li>
-            ))}
-          </ul>
-          <Card.Text>Дополнительные опции:</Card.Text>
-          <Card.Text>
-            {givenItem.options.map((option) => (
-              <span key={option.option_name}>{option.option_name} </span>
-            ))}
-          </Card.Text>
+          {!!tech_chars && (
+            <>
+              <Card.Text>Характеристики</Card.Text>
+              <ul>
+                {Object.keys(tech_chars).map((key) => (
+                  <li key={key}>
+                    {key}: {tech_chars[key]}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {givenItem.options && (
+            <>
+              <Card.Text>Дополнительные опции:</Card.Text>
+              <Card.Text>
+                {givenItem.options.map((option) => (
+                  <span key={option.option_name}>{option.option_name} </span>
+                ))}
+              </Card.Text>
+            </>
+          )}
           <Card.Text>
             Контакты: <strong>{givenItem.contacts}</strong>
           </Card.Text>
