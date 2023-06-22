@@ -1,74 +1,121 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "@/components/bootstrap";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { ItemType } from "@/data";
+import ProductCard from "@/components/ProductCard";
 
-// search cars by params
+type Inputs = {
+  model: string;
+  brand: string;
+  year: string;
+  body: string;
+  priceFrom: string;
+  priceTo: string;
+  mileageFrom: string;
+  mileageTo: string;
+};
+
+type FoundDataType = {
+  data: ItemType[];
+};
 
 const Page = () => {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm<Inputs>();
+  const [foundData, setFoundData] = useState<FoundDataType | null>(null);
 
-    const formData = new FormData(e.target);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const searchParams = new URLSearchParams(data);
 
-    console.log(formData);
+    const response = await fetch(
+      "http://localhost:3000/api/search?" + searchParams
+    );
 
-    // const params = `model=${}`
+    const result = await response.json();
 
-    // const response = await fetch('/search', {
-    //   body: JSON.stringify({
-    //
-    //   })
-    // })
-
-    // get data from input in form
-
-    // console.log(e.target);
+    setFoundData(result);
   };
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="model">
-          <Form.Label>Model</Form.Label>
-          <Form.Control type="text" placeholder="Model" />
-        </Form.Group>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="brand">
           <Form.Label>Brand</Form.Label>
-          <Form.Control type="text" placeholder="Brand" />
+          <Form.Control
+            type="text"
+            placeholder="Brand"
+            {...register("brand")}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="model">
+          <Form.Label>Model</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Model"
+            {...register("model")}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="year">
           <Form.Label>Year</Form.Label>
-          <Form.Control type="text" placeholder="Year" />
+          <Form.Control
+            type="number"
+            placeholder="Year"
+            {...register("year")}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="body">
           <Form.Label>Body</Form.Label>
-          <Form.Control type="text" placeholder="Body" />
+          <Form.Control type="text" placeholder="Body" {...register("body")} />
         </Form.Group>
         <Row>
           <Form.Group as={Col}>
             <Form.Label>Цена от</Form.Label>
-            <Form.Control type="text" placeholder="PriceFrom" />
+            <Form.Control
+              type="number"
+              placeholder="PriceFrom"
+              {...register("priceFrom")}
+            />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Цена до</Form.Label>
-            <Form.Control type="text" placeholder="PriceTo" />
+            <Form.Control
+              type="number"
+              placeholder="PriceTo"
+              {...register("priceTo")}
+            />
           </Form.Group>
         </Row>
         <Row className={"mt-3"}>
           <Form.Group as={Col}>
             <Form.Label>Пробег от</Form.Label>
-            <Form.Control type="text" placeholder="MileageFrom" />
+            <Form.Control
+              type="number"
+              placeholder="MileageFrom"
+              {...register("mileageFrom")}
+            />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Пробег до</Form.Label>
-            <Form.Control type="text" placeholder="MileageTo" />
+            <Form.Control
+              type="number"
+              placeholder="MileageTo"
+              {...register("mileageTo")}
+            />
           </Form.Group>
         </Row>
         <Button variant="primary" type="submit" className={"mt-4"}>
           Search
         </Button>
       </Form>
+
+      <Row xs={1} md={2}>
+        {foundData?.data.length === 0 && <h1>No data</h1>}
+        {foundData &&
+          foundData.data.map((item) => (
+            <ProductCard givenItem={item} key={item.id} />
+          ))}
+      </Row>
     </Container>
   );
 };
