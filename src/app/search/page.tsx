@@ -38,8 +38,6 @@ const Page = () => {
     setFoundData(result);
   };
 
-  if (!foundData) return <h1>No data</h1>;
-
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -112,7 +110,7 @@ const Page = () => {
         </Button>
       </Form>
 
-      <ProductList products={foundData.data} />
+      {foundData && <ProductList products={foundData.data} />}
     </Container>
   );
 };
