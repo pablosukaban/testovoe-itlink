@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Container } from "@/components/bootstrap";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import ProductList from "@/components/ProductList";
-import { Inputs, ItemType } from "@/types";
+import { Additional, Inputs, ItemType } from "@/types";
 import FormComp from "@/components/FormComp";
 import { SubmitHandler } from "react-hook-form";
 import { getDefault } from "@/utils/getDefault";
@@ -17,12 +17,20 @@ const UpdatePage = () => {
   const dispatch = useAppDispatch();
   const { updateProduct } = productSlice.actions;
 
+  const [additionalInfoList, setAdditionalInfoList] = useState<Additional[]>(
+    []
+  );
+
   const handleProductClick = (id: number) => {
     const foundCar = products.find((item) => item.id === id);
     if (!foundCar) {
       return;
     }
     setChosenCar(foundCar);
+
+    if (foundCar.options) {
+      setAdditionalInfoList(foundCar.options);
+    }
   };
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -46,9 +54,9 @@ const UpdatePage = () => {
       {chosenCar && (
         <FormComp
           onSubmit={onSubmit}
-          additionalInfoList={getDefault(chosenCar).options ?? []}
+          additionalInfoList={additionalInfoList}
           defaultValues={getDefault(chosenCar)}
-          setAdditionalInfoList={() => {}}
+          setAdditionalInfoList={setAdditionalInfoList}
         />
       )}
       <ProductList products={products} onClick={handleProductClick} />

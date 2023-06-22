@@ -16,6 +16,7 @@ const ViewPage = async () => {
 
   return (
     <Container>
+      <h1>Страница view</h1>
       <ProductList products={data.data} />
     </Container>
   );

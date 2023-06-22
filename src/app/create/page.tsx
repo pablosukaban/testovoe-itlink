@@ -57,6 +57,7 @@ const CreatePage = () => {
 
   return (
     <Container>
+      <h1>Страница create</h1>
       <FormComp
         onSubmit={onSubmit}
         additionalInfoList={additionalInfoList}

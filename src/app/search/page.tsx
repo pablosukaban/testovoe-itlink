@@ -38,9 +38,9 @@ const Page = () => {
     setFoundData(result);
   };
 
-
   return (
     <Container>
+      <h1>Страница search</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="brand">
           <Form.Label>Brand</Form.Label>
@@ -111,7 +111,9 @@ const Page = () => {
         </Button>
       </Form>
 
-      {foundData && <ProductList products={foundData.data} />}
+      {foundData && (
+        <ProductList products={foundData.data} onClick={() => {}} />
+      )}
     </Container>
   );
 };
