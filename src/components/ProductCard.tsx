@@ -6,14 +6,15 @@ import { ItemType } from "@/types";
 
 interface ProductProps {
   givenItem: ItemType;
+  onClick?: (id: number) => void;
 }
 
-const ProductCard = ({ givenItem }: ProductProps) => {
+const ProductCard = ({ givenItem, onClick }: ProductProps) => {
   const tech_chars = givenItem.technical_characteristics;
 
   return (
     <Col className={"mt-3"}>
-      <Card>
+      <Card onClick={() => onClick(givenItem.id)}>
         <Card.Img variant={"top"} src={givenItem.images[0]} />
         <Card.Body>
           <Card.Title>{givenItem.name}</Card.Title>

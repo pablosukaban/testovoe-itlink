@@ -3,12 +3,10 @@ import { ItemType } from "@/types";
 
 type StateType = {
   products: ItemType[];
-  count: number;
 };
 
 const initialState: StateType = {
   products: [],
-  count: 0,
 };
 
 export const productSlice = createSlice({
@@ -21,8 +19,16 @@ export const productSlice = createSlice({
     setProduct: (state, action: PayloadAction<ItemType[]>) => {
       state.products = action.payload;
     },
-    increaseCount: (state, action) => {
-      state.count += 1;
+    updateProduct: (state, action: PayloadAction<ItemType>) => {
+      const updateItem = action.payload;
+
+      const index = state.products.findIndex(
+        (item) => item.id === updateItem.id
+      );
+
+      if (index !== -1) {
+        state.products[index] = updateItem;
+      }
     },
   },
 });

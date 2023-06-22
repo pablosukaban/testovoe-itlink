@@ -23,3 +23,9 @@ export async function POST(req: Request, res: NextResponse) {
 
   return NextResponse.json({ data: { ...body, id: Date.now() } });
 }
+
+export async function PUT(req: Request, res: NextResponse) {
+  const body = await req.json();
+
+  return NextResponse.json({ data: body });
+}

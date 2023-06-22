@@ -53,12 +53,15 @@ export const data: ItemType[] = [
     },
     options: [
       {
+        id: 1,
         option_name: "Система навигации",
       },
       {
+        id: 2,
         option_name: "Подогрев передних сидений",
       },
       {
+        id: 3,
         option_name: "Датчик дождя",
       },
     ],
@@ -84,12 +87,15 @@ export const data: ItemType[] = [
     },
     options: [
       {
+        id: 1,
         option_name: "Система доступа без ключа",
       },
       {
+        id: 2,
         option_name: "Панорамная крыша",
       },
       {
+        id: 3,
         option_name: "Спортивные сиденья",
       },
     ],
@@ -114,12 +120,15 @@ export const data: ItemType[] = [
     },
     options: [
       {
+        id: 1,
         option_name: "Адаптивный круиз-контроль",
       },
       {
+        id: 2,
         option_name: "Панорамный вид из кабины",
       },
       {
+        id: 3,
         option_name: "Система контроля слепых зон",
       },
     ],
@@ -143,12 +152,15 @@ export const data: ItemType[] = [
     },
     options: [
       {
+        id: 1,
         option_name: "Керамические тормозные диски",
       },
       {
+        id: 2,
         option_name: "Система контроля устойчивости",
       },
       {
+        id: 3,
         option_name: "Спортивный выхлоп",
       },
     ],
