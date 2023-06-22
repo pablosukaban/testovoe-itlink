@@ -1,3 +1,13 @@
 "use client";
 
-export { Button, Col, Container, Row, Card, Navbar, Nav, Form } from "react-bootstrap";
+export {
+  Button,
+  Col,
+  Container,
+  Row,
+  Card,
+  Navbar,
+  Nav,
+  Form,
+  Modal,
+} from "react-bootstrap";

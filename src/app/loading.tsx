@@ -4,7 +4,7 @@ import { Container } from "@/components/bootstrap";
 const Loading = () => {
   return (
     <Container>
-      <h1>Loading...</h1>;
+      <h1>Loading...</h1>
     </Container>
   );
 };

@@ -50,14 +50,16 @@ const UpdatePage = () => {
 
   return (
     <Container>
-      <h1>Выберите авто</h1>
-      {chosenCar && (
+      <h1>Страница Update</h1>
+      {chosenCar ? (
         <FormComp
           onSubmit={onSubmit}
           additionalInfoList={additionalInfoList}
           defaultValues={getDefault(chosenCar)}
           setAdditionalInfoList={setAdditionalInfoList}
         />
+      ) : (
+        <h3>Выберите авто</h3>
       )}
       <ProductList products={products} onClick={handleProductClick} />
     </Container>

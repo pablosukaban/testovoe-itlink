@@ -13,7 +13,7 @@ const ProductCard = ({ givenItem, onClick }: ProductProps) => {
   const tech_chars = givenItem.technical_characteristics;
 
   return (
-    <Col className={"mt-3"}>
+    <Col className={"mt-3 d-flex align-items-stretch"}>
       <Card onClick={() => (onClick ? onClick(givenItem.id) : "")}>
         <Card.Img variant={"top"} src={givenItem.images[0]} />
         <Card.Body>

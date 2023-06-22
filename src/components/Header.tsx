@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Nav, Navbar } from "@/components/bootstrap";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { productSlice } from "@/redux/productSlice";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const links = ["view", "search", "create", "update", "delete"];
@@ -28,8 +29,11 @@ const Header = () => {
         </Nav.Item>
         {links.map((link) => (
           <Nav.Item key={link}>
-            <Nav.Link as={Link} href={`/${link}`}>
-              {link}{" "}
+            <Nav.Link
+              as={Link}
+              href={`/${link}`}
+            >
+              {link[0].toUpperCase() + link.slice(1)}
             </Nav.Link>
           </Nav.Item>
         ))}
