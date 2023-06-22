@@ -20,7 +20,7 @@ const FormComp = ({
     defaultValues: defaultValues,
   });
 
-  const [isTechChars, setIsTechChars] = useState(true);
+  const [isTechChars, setIsTechChars] = useState(false);
 
   const addInfo = () => {
     const newList = [
