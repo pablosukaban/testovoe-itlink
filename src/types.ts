@@ -1,6 +1,6 @@
 export interface ItemType {
   id: number;
-  images: string | Blob[] | MediaSource[];
+  images: string | string[] | Blob[] | MediaSource[];
   name: string;
   description: string;
   price: number;

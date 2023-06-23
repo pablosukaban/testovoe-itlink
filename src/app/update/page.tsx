@@ -44,7 +44,7 @@ const UpdatePage = () => {
       body: JSON.stringify({
         ...data,
         id: chosenCar?.id,
-        images: [URL.createObjectURL(data.images[0])],
+        images: [URL.createObjectURL(data.images[0] as Blob)],
       }),
     });
 

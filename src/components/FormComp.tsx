@@ -17,7 +17,7 @@ const FormComp = ({
   setAdditionalInfoList,
   defaultValues,
 }: FormCompProps) => {
-  const { handleSubmit, register, reset } = useForm<Inputs>({
+  const { handleSubmit, register } = useForm<Inputs>({
     defaultValues: defaultValues,
   });
 

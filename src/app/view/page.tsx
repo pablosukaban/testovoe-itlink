@@ -1,5 +1,4 @@
-import ProductCard from "@/components/ProductCard";
-import { Container, Row } from "@/components/bootstrap";
+import { Container } from "@/components/bootstrap";
 import { ItemType } from "@/types";
 import ProductList from "@/components/ProductList";
 
@@ -8,9 +7,7 @@ type ResponseType = {
 };
 
 const ViewPage = async () => {
-  const res = await fetch("http://localhost:3000/api/product", {
-    cache: "no-store",
-  });
+  const res = await fetch("http://localhost:3000/api/product");
 
   const data: ResponseType = await res.json();
 

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "@/components/bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
-import ProductCard from "@/components/ProductCard";
 import { ItemType } from "@/types";
 import ProductList from "@/components/ProductList";
 
